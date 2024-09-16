@@ -1,2 +1,9 @@
-status.txt
-Ryan Son
+Title: status.txt
+Description: Explaination of Kali VM purpose.
+Author: Ryan Son
+
+We are using Kali because it is designed by and for security professionals. It contains software that we will use and explore during the term instead of needing to individually configure all of our machines. Kali as a virtual machine allows us to use it as a playground that doesn't affect our own machine. 
+
+Kali is running correctly with no issues.
+
+Kali runs pretty well, though I have no other VM experience to compare it.
