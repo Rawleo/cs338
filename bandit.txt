@@ -1,0 +1,36 @@
+Title: bandit.txt
+Description: Notes of progression through bandit by overthewire.org
+Author: Ryan Son
+
+Level 0: ssh -p 2220 bandit0@bandit.labs.overthewire.org
+password: bandit0
+Level 0.5: cat readme
+password: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+Level 1.5: cat ./- (in /home/bandit1 will display the password)
+password: 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+Level 2.5: cat spaces\ in\ this\ filename
+password: MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
+Level 3.5 cat (tab key) or ls -a (...Hiding-From-You)
+password: 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
+Level 4.5 cd inhere then run file ./* to locate ASCII text file
+password: 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+Level 5.5: find -size 1033c (find file size 1033 bytes, c denotes bytes)
+password: HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
+Level 6.5: find / -user bandit7 -group bandit6 -size 33c 
+/var/lib/dpkg/info/bandit7.password
+password: morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+Level 7.5: cat data.txt |grep millionth
+password: dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+Level 8.5: sort data.txt | uniq -u
+password: 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+Level 9.5: strings data.txt
+password: FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
+Level 10.5: base64 data.txt -d
+password: dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+Level 11.5: cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+password: 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+
+Summary: 
+
+This game taught me how to read the contents of a file by using cat. Many files were also hidden with specific properties, so by utilizing find I could locate the path to the file that contained the password. Then things got a lot harder with files that had the password deeply embedded within it, so advanced techniques such as grep to locate a pattern in the file and different types of encryption such as base64 and rot13.
+
