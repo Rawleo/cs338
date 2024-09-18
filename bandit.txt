@@ -6,6 +6,7 @@ Each level contains terminal commands input to locate the password.
 Login to progress to each subsequent level is:
 ssh -p 2220 banditX@bandit.labs.overthewire.org
 Where X is the level number.
+Level 0.5 is Level 0 -> Level 1. 
 
 Level 0: ssh -p 2220 bandit0@bandit.labs.overthewire.org
 password: bandit0
