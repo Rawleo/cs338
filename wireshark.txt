@@ -21,7 +21,7 @@ Note: Used host cs338.jeffondich.com to identifty that the host address to monit
 
 ===== QUESTIONS ===== 
 1. I see [PSH, ACK] instead of [SYN, ACK], is this because the server is just throwing the information at the client application to build the contents of the website? How does PSH differer than SYN?
-
+2. I also noticed that I had to close the broweser tab to end the connection between the client and server and observe it on Wireshark. Will this always be the case when going on to a website?
 
 
 
