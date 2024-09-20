@@ -13,15 +13,14 @@ Author: Ryan Son
 6. The daytime server initiated the closing of the TCP connection because it sent the first [FIN, ACK].
 
 ===== HTTP ======
-1. 837 opened which were found by finding the amount of [ACK] were in each row summary  
+1. 2 TCP Connections. 2 [FIN, ACK] packets each were sent which shows the end of the TCP handshake between the client and server.   
 2. Yes: 4 192.168.64.2 172.233.221.124 HTTP 489 GET /index.html HTTP/1.1
 3. Yes: 9 192.168.64.2 172.233.221.124 HTTP 451 GET /jeff-square-colorado.jpg HTTP/1.1 
 
 Note: Used host cs338.jeffondich.com to identifty that the host address to monitor was actually 172.233.221.124
 
 ===== QUESTIONS ===== 
-1. I would assume that all instances of ACK signify that a request was acknowledged, therefore a TCP connection that was previously opened is now closed. So is my count of 837 TCP connections accurate? It seems a little big.
-2. Also I see [PSH, ACK] instead of [SYN, ACK], is this because the server is just throwing the information at the client application to build the contents of the website? How does PSH differer than SYN?
+1. I see [PSH, ACK] instead of [SYN, ACK], is this because the server is just throwing the information at the client application to build the contents of the website? How does PSH differer than SYN?
 
 
 
