@@ -1,0 +1,45 @@
+Cookies and Cross-Site Scripting (XSS)
+Author: Ryan Son
+Date: 10/26/24
+
+Part 1: Cookies
+
+a. Two cookies: name, value, domain
+    - session, whatever, cs338.jeffondich.com
+    - theme, default, cs338.jeffondich.com
+
+b. Yes, the website changed the cookie below to store the value of the new theme. 
+    - theme, red, cs338.jeffondich.com
+
+c. Yes, the theme=red matches the value found in the theme cookie.
+    - Request: GET /fdf/static/css/bootstrap.min.css.map HTTP/1.1 ... Cookie: theme=red 
+    - Response: HTTP/1.1 200 OK ... Set-Cookie: theme=red; 
+
+d. Yes, the red theme persisted after the relaunch.
+
+e. The current theme is sent via the cookie header in the HTTP request that is sent to the FDF server..  
+
+f. The browser requests to change the theme through the GET line:
+    - GET /fdf/?theme=blue HTTP/1.1
+
+g. By using the browser's inspector, I can alter the value of the theme cookie and type in either default or blue or red to change the theme.
+
+h. Altering the Cookie header by changing the value from Cookie: theme=red to Cookie: theme=blue will change the theme that is displayed on the webpage to the new value of blue.
+
+i. MacOS stores the cookies in Firefox in /Users/USER/Library/Application\ Support/Firefox/Profiles/PROFILE/cookies.sqlite.
+    - All of the cookies are found in this sqlite file.
+
+Part 2: Cross-Site Scripting (XSS)
+
+a. Prof. Moriarty
+    - Creates a post on Moriarty's machine that includes malicious JavaScript code way before any user will access it.
+    - Post is created on the FDF server and then waits for a user to click on it.
+    - User will then login to their account on FDF - presently.
+    - User then clicks on an offending post and will request the content from the FDF server.
+    - Offending site post will execute the malicious code after it has been opened by the user on the user's machine.
+
+b. An XSS attack that can access the cookies of the browser could get a hold of session logins, reading them and then sharing them with an attacker, for any websites that have requested to be remembered to save the user from needing to login each time. 
+
+c. Another XSS attack could delete all of your cookies. And then set language preferences to a language that the user probably does not know, so that the user could never read the website's content.
+
+d. A browser or server can scan for the less than and greater than symbols that are used to allow JavaScript to be written in HTML with a character that is invisible, therefore it isn't actually executed when a user requests for the content of post and it contains potentially malicious code. The code will be effectively rendered useless after replacing those characters. 
