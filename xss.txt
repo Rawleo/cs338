@@ -24,7 +24,8 @@ f. The browser requests to change the theme through the GET line:
 
 g. By using the browser's inspector, I can alter the value of the theme cookie and type in either default or blue or red to change the theme.
 
-h. Altering the Cookie header by changing the value from Cookie: theme=red to Cookie: theme=blue will change the theme that is displayed on the webpage to the new value of blue.
+h. Altering the Cookie header by changing the value from Cookie: theme=red to Cookie: 
+theme=blue will change the theme that is displayed on the webpage to the new value of blue.
 
 i. MacOS stores the cookies in Firefox in /Users/USER/Library/Application\ Support/Firefox/Profiles/PROFILE/cookies.sqlite.
     - All of the cookies are found in this sqlite file.
@@ -38,8 +39,14 @@ a. Prof. Moriarty
     - User then clicks on an offending post and will request the content from the FDF server.
     - Offending site post will execute the malicious code after it has been opened by the user on the user's machine.
 
-b. An XSS attack that can access the cookies of the browser could get a hold of session logins, reading them and then sharing them with an attacker, for any websites that have requested to be remembered to save the user from needing to login each time. 
+b. An XSS attack that can access the cookies of the browser could get a hold of session logins, reading 
+them and then sharing them with an attacker, for any websites that have requested to be remembered to 
+save the user from needing to login each time. 
 
-c. Another XSS attack could delete all of your cookies. And then set language preferences to a language that the user probably does not know, so that the user could never read the website's content.
+c. Another XSS attack could delete all of your cookies. And then set language preferences to a language 
+that the user probably does not know, so that the user could never read the website's content.
 
-d. A browser or server can scan for the less than and greater than symbols that are used to allow JavaScript to be written in HTML with a character that is invisible, therefore it isn't actually executed when a user requests for the content of post and it contains potentially malicious code. The code will be effectively rendered useless after replacing those characters. 
+d. A browser or server can scan for the less than and greater than symbols that are used to allow 
+JavaScript to be written in HTML with a character that is invisible, therefore it isn't actually executed 
+when a user requests for the content of post and it contains potentially malicious code. The code will be 
+effectively rendered useless after replacing those characters. 
